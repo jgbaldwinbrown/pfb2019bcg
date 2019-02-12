@@ -8,6 +8,8 @@ Sofia Robb
       * [Why?](unix.md/#why)
       * [Helpful Tips](unix.md/#helpful-tips)
    * [Unix](unix.md/#unix)
+      * [Unix 0](unix.md/#unix-0)
+         * [Installing Linux on a PC](unix.md/#installing-linux-on-a-windows-pc)
       * [Unix 1](unix.md/#unix-1)
          * [Unix Overview](unix.md/#unix-overview)
             * [What is the Command-Line?](unix.md/#what-is-the-command-line)
