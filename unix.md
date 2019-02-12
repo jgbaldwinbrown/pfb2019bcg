@@ -47,7 +47,7 @@ the Unix environment discussed here. There are several solutions to this
 problem, enumerated below. If you understand these and can carry one of them
 out, more power to you. If not, the first option (installing Linux in a virtual
 machine) is the one that requires the fewest changes to your computer. Talk to
-an instructor IN ADVANCE OF THE FIRST CLASS if you cannot do one of these
+an instructor __IN ADVANCE OF THE FIRST CLASS__ if you cannot do one of these
 yourself.
 
 1. Set up a virtual machine with Virtualbox, and install Linux Ubuntu MATE 18.04 LTS on it (walkthrough [here](https://itsfoss.com/install-linux-in-virtualbox/)).
