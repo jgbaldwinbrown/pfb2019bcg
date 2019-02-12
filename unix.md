@@ -1,6 +1,11 @@
 # Programming For Biology 2018
 
 __Instructors__  
+James Baldwin-Brown
+Jacob Cooper
+Robert Greenhalgh
+
+__Based on course created by__
 Simon Prochnik  
 Sofia Robb     
 
