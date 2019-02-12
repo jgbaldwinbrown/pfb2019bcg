@@ -38,6 +38,23 @@ What are our tips for having a successful programming course?
 
 # Unix
 
+## Unix 0
+
+### Installing Linux on a Windows PC
+
+If you are coming from the Windows world, you will find that you are lacking
+the Unix environment discussed here. There are several solutions to this
+problem, enumerated below. If you understand these and can carry one of them
+out, more power to you. If not, the first option (installing Linux in a virtual
+machine) is the one that requires the fewest changes to your computer. Talk to
+an instructor IN ADVANCE OF THE FIRST CLASS if you cannot do one of these
+yourself.
+
+1. Set up a virtual machine with Virtualbox, and install Linux Ubuntu MATE 18.04 LTS on it (walkthrough [here](https://itsfoss.com/install-linux-in-virtualbox/)).
+2. Activate the "Windows Subsystem for Linux" and install Ubuntu on it (walkthrough [here](https://docs.microsoft.com/en-us/windows/wsl/install-win10)).
+3. Install Linux Ubuntu MATE 18.04 LTS on a separate hard drive partition (walkthrough [here](https://itsfoss.com/install-ubuntu-1404-dual-boot-mode-windows-8-81-uefi/)).
+4. Completely erase Windows from your computer and install Linux Ubuntu MATE 18.04 LTS instead (walkthrough [here](https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop#0)).
+
 ## Unix 1
 
 ### Unix Overview
