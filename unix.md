@@ -611,10 +611,10 @@ If you just want to know how many unique lines there are in the file, add a `wc`
 **Page Through a Really Long Directory Listing**
 
 
-Pipe the output of `ls` to the `more` program, which shows a page at a time.  If you have it, the `less` program is even better:
+Pipe the output of `ls` to the `less` program, which shows a page at a time:
 
 ```
-(~) 69% ls -l | more
+(~) 69% ls -l | less
 ```
 
 **Monitor a Growing File for a Pattern**
