@@ -60,4 +60,3 @@ GATGGGATTGGGGTTTTCCCCTCCCATGTGCTCAAGACTGGCGCTAAAAGTTTTGAGCTTCTCAAAAGTCTAGAGCCACC
   - store each count in a dictionary. example: `nt_comp['A']=2`
   - when you are done counting each character calculate and report the nucleotide composition and the GC content.
 
- 13. Are you still committing your work?
