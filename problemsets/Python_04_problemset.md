@@ -82,7 +82,6 @@ Python 4 Problem Set -- Lists and Loops
 
 13. Modify the script from #11 so that you also print out the number (postion in the list) of each sequence (i.e., "1\\t4\\tACGT\\n")
 
-14. Have you been commiting you work?
 
 ## Fun challenge problems! These are real scripts you might use in real life. You have already learned all you need to know to do each. If you don't have enough time in this session to complete, come back and try later.
 
