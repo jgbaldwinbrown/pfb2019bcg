@@ -1,4 +1,4 @@
-Python 6 - IO - Problem Set
+Python 5 - IO - Problem Set
 ===================
 
 1. Write a script to do the following to [Python_06.txt](https://raw.githubusercontent.com/prog4biol/pfb2018/master/files/Python_06.txt)
@@ -78,15 +78,3 @@ A. Find all the genes that are transcription factors for cell proliferation
 
 
 __Now do the same on the command line with `comm` command. You might need to `sort` each file first.__
-
-
-## Extra: Expand on last problemset exercise on nucleotide composition
-  - get the raw file [Python_06.seq.txt](https://raw.githubusercontent.com/prog4biol/pfb2018/master/files/Python_06.seq.txt)
-  - in a script, open this file
-  - iterate over each line in this file (seqName\tsequence\n)
-     - for each sequence:
-         - calculate and store the count of each unique nucleotide character in a dictionary
-         - report the name, total of each nucleotide count, and the GC content 
- 
- ## Extra: Now that you know how to open a file and iterate over each line, you can write your first FASTA parser
-   - use file I/O, `if` statements and dictionaries to write your first FASTA parser. Some other useful functions and methods are `find`, `split`, string concatenation.
