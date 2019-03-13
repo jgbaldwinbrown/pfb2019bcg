@@ -1,4 +1,4 @@
-Python 5 - Dictionaries and Sets - Problem Set
+Python 6 - Dictionaries and Sets - Problem Set
 ===================
 
 1.  Write a script in which you construct a dictionary of your favorite things.
