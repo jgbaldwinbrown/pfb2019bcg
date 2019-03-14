@@ -19,7 +19,7 @@ Python 5 - IO - Problem Set
     - average line length   
 
 
-5. You are going to generate a couple of gene list that are saved in files, add their contents to sets, and compare them. 
+5. You are going to generate a couple of gene lists that are saved in files, add their contents to lists, and compare them. 
 
 __Generate Gene Lists:__
 
@@ -54,11 +54,11 @@ _In the same Ensembl window, follow the steps below to get genes that have been 
 19. Rename the file to "alpaca_pigmentation_genes.tsv"
 
 
-__Open each of the three files and add the geneIDs to a Set. One Set per file.__
+__Open each of the three files and add the geneIDs to a List. One List per file.__
 
 A. Find all the genes that are not cell proliferation genes.  
 B. Find all genes that are both stem cell proliferation genes and pigment genes.  
-*Note* Make sure to NOT add the header to your set.  
+*Note* Make sure to NOT add the header to your list.  
 
 __Now, let do it again with transciption factors.__
  
@@ -72,7 +72,7 @@ __Now, let do it again with transciption factors.__
 6. Export all results to "File" "TSV" --> GO
 7. Rename the file to "alpaca_transcriptionFactors.tsv"
 
-__Open these two files: 1) the transcription factor gene list file and 2) the cell proliferation gene list file. Add each to a Set, One Set per file__
+__Open these two files: 1) the transcription factor gene list file and 2) the cell proliferation gene list file. Add each to a List, One List per file__
 
 A. Find all the genes that are transcription factors for cell proliferation
 
