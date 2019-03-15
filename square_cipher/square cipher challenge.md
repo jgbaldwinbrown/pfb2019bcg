@@ -25,3 +25,5 @@ This process can be accomplishing using only techniques that we have learned so 
 * Use 5 rows in the cipher (the phrase is 55 characters long with spaces included, 50 without)
 * Try to design it in a way that your cipher can encode or decode ANY phrase evenly divisable by 5. Next class we can test a few ciphers on other phrases!
 
+## Hint!
+The phrase itself might contain a clue as to how to approach the problem....
