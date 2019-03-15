@@ -1,62 +1,80 @@
-Python 5 - Dictionaries and Sets - Problem Set
+Python 5 - IO - Problem Set
 ===================
 
-1.  Write a script in which you construct a dictionary of your favorite things.
-
-> Some of my favorites:
->
-> | Type | Favorite                                 |
-> | ---- | ---------------------------------------- |
-> | book | [Jitterbug Perfume](https://en.wikipedia.org/wiki/Jitterbug_Perfume) |
-> | song | [Tom Petty - I Won't Back Down](https://www.youtube.com/watch?v=nvlTJrNJ5lA) |
-> | tree | [Cedar](https://sciencing.com/cedar-trees-5432718.html) |
+1. Write a script to do the following to [Python_06.txt](https://raw.githubusercontent.com/prog4biol/pfb2018/master/files/Python_06.txt)
+   - Open and read the contents.  
+   - Uppercase each line
+   - Print each line to the STDOUT
 
 
-2. Print out your favorite book.
-```python
-print(fav_dict['book'])
-```
+2. Modifiy the script in the previous problem to write the contents to a new file called "Python_06_uc.txt"
 
-3. Print out your favorite book but use a variable in the key.
-``` python
-fav_thing = 'book'
-print(fav_dict[fav_thing])
-```
 
-4. Now print your favorite tree.
+3. Open and print the reverse complement of each sequence in [Python_06.seq.txt](https://raw.githubusercontent.com/prog4biol/pfb2018/master/files/Python_06.seq.txt). Each line is the following format:    `seqName\tsequence\n.` Make sure to print the output in fasta format including the sequence name and a note in the description that this is the reverse complement. Print to STDOUT and capture the output into a file with a command line redirect '>'. 
+   - **Remember is is always a good idea to start with a test set for which you know the correct output.**
 
-5. Add your favorite 'organism' to the dictionary. Make organism the new value of `fav_thing`
-```python
-fav_thing = 'organism'
-print(fav_dict[fav_thing])
-```
+4. Open the [FASTQ](https://en.wikipedia.org/wiki/FASTQ_format) file [Python_06.fastq](https://raw.githubusercontent.com/prog4biol/pfb2018/master/files/Python_06.fastq) and go through each line of the file. Count the number of lines and the number of characters per line. Have your program report the:  
+    - total number of lines  
+    - total number of characters  
+    - average line length   
 
-6. Take a value from the command line for `fav_thing` and print the value of that item from the dictionary. Maybe you want to print out all the keys to the user so that they know what to pick from. Check out `input()`. Here is a <a href="https://www.tutorialspoint.com/python/python_files_io.htm">link</a>.
 
-7. Change the value of your favorite organism.
+5. You are going to generate a couple of gene lists that are saved in files, add their contents to lists, and compare them. 
 
-8. Get the `fav_thing` from the command line and a new value for that key. Change the value with the user inputted value.
+__Generate Gene Lists:__
 
-9. Use a `for` loop to print out each key and value of the dictionary.
 
-10. Write a script to find the intersection, difference, union, and symetrical difference between these two sets.
+_Get all genes:_
 
-```
-Set A = 3 14 15 9 26 5 35 9
-Set B = 60 22 14 0 9
-```
+1. Go to [Ensembl Biomart](http://useast.ensembl.org/biomart/martview/4b8fb1941e75e7763e8c4ccf1ffcd9c5).
+2. In dropdown box, select "Ensembl Genes 94"
+3. In dropdown box, select "Alpaca Genes" 
+4. On the left, click Attributes
+5. Expand GENE:
+6. Deselect "transcript stable ID".
+7. Click Results (top left)
+8. Export all results to "File" "TSV" --> GO
+9. Rename the file to "alpaca_all_genes.tsv"
 
-11. If you create a set using a DNA sequence, what will you get back? Try it with this sequence:
-```
-GATGGGATTGGGGTTTTCCCCTCCCATGTGCTCAAGACTGGCGCTAAAAGTTTTGAGCTTCTCAAAAGTCTAGAGCCACCGTCCAGGGAGCAGGTAGCTGCTGGGCTCCGGGGACACTTTGCGTTCGGGCTGGGAGCGTGCTTTCCACGACGGTGACACGCTTCCCTGGATTGGCAGCCAGACTGCCTTCCGGGTCACTGCCATGGAGGAGCCGCAGTCAGATCCTAGCGTCGAGCCCCCTCTGAGTCAGGAAACATTTTCAGACCTATGGAAACTACTTCCTGAAAACAACGTTCTGTCCCCCTTGCCGTCCCAAGCAATGGATGATTTGATGCTGTCCCCGGACGATATTGAACAATGGTTCACTGAAGACCCAGGTCCAGATGAAGCTCCCAGAATTCGCCAGAGGCTGCTCCCCCCGTGGCCCCTGCACCAGCAGCTCCTACACCGGCGGCCCCTGCACCAGCCCCCTCCTGGCCCCTGTCATCTTCTGTCCCTTCCCAGAAAACCTACCAGGGCAGCTACGGTTTCCGTCTGGGCTTCTTGCATTCTGGGACAGCCAAGTCTGTGACTTGCACGTACTCCCCTGCCCTCAACAAGATGTTTTGCCAACTGGCCAAGACCTGCCCTGTGCAGCTGTGGGTTGATTCCACACCCCCGCCCGGCACCCGCGTCCGCGCCATGGCCATCTACAAGCAGTCACAGCACATGACGGAGGTTGTGAGGCGCTGCCCCCACCATGAGCGCTGCTCAGATAGCGATGGTCTGGCCCCTCCTCAGCATCTTATCCGAGTGGAAGGAAATTTGCGTGTGGAGTATTTGGATGACAGAAACACTTTTCGTGGGGTTTTCCCCTCCCATGTGCTCAAGACTGGCGCTAAAAGTTTTGAGCTTCTCAAAAGTCTAGAGCCACCGTCCAGGGAGCAGGTAGCTGCTGGGCTCCGGGGACACTTTGCGTTCGGGCTGGGAGCGTGCTTTCCACGACGGTGACACGCTTCCCTGGATTGGCAGCCAGACTGCCTTCCGGGTCACTGCCATGGAGGAGCCGCAGTCAGATCCTAGCGTCGAGCCCCCTCTGAGTCAGGAAACATTTTCAGACCTATGGAAACTACTTCCTGAAAACAACGTTCTGTCCCCCTTGCCGTCCCAAGCAATGGATGATTTGATGCTGTCCCCGGACGATATTGAACAATGGTTCACTGAAGACCCAGGTCCAGATGAAGCTCCCAGAATTCGCCAGAGGCTGCTCCCCCCGTGGCCCCTGCACCAGCAGCTCCTACACCGGCGGCCCCTGCACCAGCCCCCTCCTGGCCCCTGTCATCTTCTGTCCCTTCCCAGAAAACCTACCAGGGCAGCTACGGTTTCCGTCTGGGCTTCTTGCATTCTGGGACAGCCAAGTCTGTGACTTGCACGTACTCCCCTGCCCTCAACAAGATGTTTTGCCAACTGGCCAAGACCTGCCCTGTGCAGCTGTGGGTTGATTCCACACCCCCGCCCGGCACCCGCGTCCGCGCCATGGCCATCTACAAGCAGTCACAGCACATGACGGAGGTTGTGAGGCGCTGCCCCCACCATGAGCGCTGCTCAGATAGCGATGGTCTGGCCCCTCCTCAGCATCTTATCCGAGTGGAAGGAAATTTGCGTGTGGAGTATTTGGATGAC
-```
+_In the same Ensembl window, follow the steps below to get genes that have been labeled with Gene Ontology term "stem cell proliferation". For extra information on stem cell proliferation, check out  [stem cell proliferation](http://purl.obolibrary.org/obo/GO_0072089)_
 
-12.  Nucleotide Composition. Write a script that:
-  - determines the unique characters in this sequence
-  ```
-  GAACTCCAAAAATGAAAACATAGTAGCAATCAAAGCATCCCACTATTTTTTGTCTCTCGTTTCATTAGCGTTGTAAATTACTGATACCCTACTATACCTCTACAAGGCCTTTGTCATCTTTTTACTCAAGTGTGAAATCATCACTTATTGTATGAAGGATGAGCTTTCCGTTCGCTAGTTTGCTGAAAAGGCCTTCTGCAATAAGCTCTCTATTATCTTTAAAAAAACCTGGTTCCTGGTCTTCCATTCTGCTAAAAGCTGTAGGGGTTTTATCACGAGATTCCCGTTGGCATTCTGACTTATTAAAAATGCTTACAGAAGAAATGGATTCTTTAAATGGTCAAATTAATACGTGGACAGATAATAATCCTTTATTAGATGAAATTACGAAGCCATACAGAAAATCTTCAACTCGTTTTTTTCATCCGCTTCTTGTACTTCTAATGTCTAGAGCATCAGTAAATGGGGATCCACCGAGTCAGCAACTATTTCAAAGGTACAAACAACTTGCCCGTGTAACAGAATTGATTCATGCTGCCAATATAATTCATATTAATATTGGAGAAGAACAAAGCAACGAACAGATTAAACTTGCAACGTTGGTTGGAGATTATTTACTCGGAAAGGCGTCTGTTGATTTAGCACATTTAGAAAACAACGCTATTACAGAAATTATGGCTTCTGTTATTGCAAACTTAGTTGAAGGGCACTTCGGAAGCCGACAAAATGGCTCTGTTGGTTTGTCAAACGAACGAACCATCCTTCTGCAATCAGCCTTTATGCCAGCAAAGGCATGTTTATGCGCAAGCATATTGAATAACTCATCACAATACATTAATGATGCGTGTTTCAATTATGGAAAATTTCTAGGCTTATCGCTGCAACTGGCCCATAAGCCTGTATCTCCTGACGCCCAAGTTTTGCAAAAGAATAATGACATTTTGAAAACATATGTTGAGAATGCCAAGAGCTCATTGTCTGTTTTCCCCGATATAGAGGCTAAGCAAGCTCTCATGGAAATCGCTAATAGTGTTTCGAAGTAATCGACAGGTATTGTATCCTGGATTAATATTAGGGTGGCTCATGCATGCTCGTGCAATCGTAACAAATATGTCTTTCTTTTACGAATTTTAACGCTTCAATATAAATCATATTTTTCCTCA
-  ```
-  - iterate over each unique character and count the number found in the sequence
-  - store each count in a dictionary. example: `nt_comp['A']=2`
-  - when you are done counting each character calculate and report the nucleotide composition and the GC content.
+10. Click "Filters"
+11. Under "Gene Ontology", check "Go term name" and enter "stem cell proliferation"
+12. Click Results (top left)
+13. Export all results to "File" "TSV" --> GO
+14. Rename the file to "alpaca_stemcellproliferation_genes.tsv"
 
+_In the same Ensembl window, follow the steps below to get genes that have been labeled with Gene Ontology term "stem cell proliferation". For extra information on pigmentation, check out [pigmentation](http://purl.obolibrary.org/obo/GO_0043473)_
+
+
+15. Click "Filters"
+16. Under "Gene Ontology", check "Go term name" and enter "pigmentation"
+17. Click Results (top left)
+18. Export all results to "File" "TSV" --> GO
+19. Rename the file to "alpaca_pigmentation_genes.tsv"
+
+
+__Open each of the three files and add the geneIDs to a List. One List per file.__
+
+A. Find all the genes that are not cell proliferation genes.  
+B. Find all genes that are both stem cell proliferation genes and pigment genes.  
+*Note* Make sure to NOT add the header to your list.  
+
+__Now, let do it again with transciption factors.__
+ 
+1. Go back to your Ensembl Biomart window
+2. Deselect the "GO Term Name"
+3. Select "GO Term Accession"
+4. Enter these two accessions IDs which in most organisms will be all the transcription factors
+   - GO:0006355 is "regulation of transcription, DNA-dependent”. 
+   - GO:0003677 is "DNA binding"
+5.  Click Results (top left)
+6. Export all results to "File" "TSV" --> GO
+7. Rename the file to "alpaca_transcriptionFactors.tsv"
+
+__Open these two files: 1) the transcription factor gene list file and 2) the cell proliferation gene list file. Add each to a List, One List per file__
+
+A. Find all the genes that are transcription factors for cell proliferation
+
+
+__Now do the same on the command line with `comm` command. You might need to `sort` each file first.__
