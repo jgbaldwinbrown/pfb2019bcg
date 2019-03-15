@@ -6,10 +6,10 @@ As challenge problem, try and build a square cipher. A square cipher is an old w
 * Take a phrase
 "This is cat"
 
-* Write the phrase as a rectangle. Here we leave out spaces, but you could leave them in.
-Thi
-sis
-cat
+* Write the phrase as a rectangle. Here we leave out spaces, but you could leave them in.\s\s
+Thi\s\s
+sis\s\s
+cat\s\s
 
 * The encoded text is now the string if you read down the box instead of across:
 Tschiaist
