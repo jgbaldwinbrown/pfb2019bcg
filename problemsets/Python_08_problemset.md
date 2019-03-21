@@ -1,79 +1,65 @@
-Python 8 - Data Structures -Problem Set
+Python 8 - Regular Expressions - Problem Set
 ===================
 
-__Don't forget to use a small test data set when you are testing your code. Make sure you know what the correct answer should be__
+1. In the file [Python_07_nobody.txt](https://raw.githubusercontent.com/prog4biol/pfb2018/master/files/Python_07_nobody.txt) find every occurrence of 'Nobody' and print out the position.
 
-1. Take a multi-FASTA [Python_08.fasta](https://raw.githubusercontent.com/prog4biol/pfb2018/master/files/Python_08.fasta) file from user input and calculate the nucleotide composition for each sequence. Use a datastructure to keep count. Print out each sequence name and its compostion in this format `seqName\tA_count\tT_count\tG_count\C_count`
+2. In the file [Python_07_nobody.txt](https://raw.githubusercontent.com/prog4biol/pfb2018/master/files/Python_07_nobody.txt) substitute every occurrence of 'Nobody' with your favorite name and write an output file with that person's name (ex. Michael.txt).
 
-Here is a structure of a handy datastructure to store this information
+3. Using pattern matching, find all the header lines in [Python_07.fasta](https://raw.githubusercontent.com/prog4biol/pfb2018/master/files/Python_07.fasta). Note that the format for a header in a fasta file is a line that starts with a greater than symbol and is followed by some text (e.g. `>seqName description` where seqName is the sequence name or identifier. The identifier cannot have spaces in it. The description that follows it can have spaces.)
+
+4. If a line matches the format of a FASTA header, extract the sequence name and description using sub patterns (groups). 
+	- Print lines something like this `id:"extracted seq name" desc:"extracted description"`
+
+5. Create a FASTA parser, or modify your FASTA parser from the previous problem set, to use regular expressions. Also make sure your parser can deal with a sequence that is split over many lines.
+
+6. The enzyme ApoI has a restriction site: R^AATTY where R and Y are degenerate nucleotideides. See the IUPAC table to identify the nucleotide possibilities for the R and Y. Write a regular expression to find and print all occurrences of the site in the following sequence [Python_07_ApoI.fasta](https://raw.githubusercontent.com/prog4biol/pfb2018/master/files/Python_07_ApoI.fasta). 
+
 ```
-seqs[geneName][nucleotide]=count
-
-seqs['geneA']['A'] = 2
-seqs['geneA']['T'] = 3
-seqs['geneA']['G'] = 3
-seqs['geneA']['C'] = 1
-
-
-seqs['geneB']['A'] = 1
-seqs['geneB']['T'] = 5
-seqs['geneB']['G'] = 2
-seqs['geneB']['C'] = 2
-``` 
-
-2. Write a script that takes a multi-FASTA file [Python_08.fasta](https://raw.githubusercontent.com/prog4biol/pfb2018/master/files/Python_08.fasta) from user input and breaks each sequence into codons (every three nucleotides is a codon) in just the first reading frame. Your output should look like this 
-```
-seq1-frame-1-codons
-CAT GCT TGA GTC
-``` 
-Write the output to a file called 'Python_08.codons-frame-1.nt'.
-
-3. Add in exception handling. Throw and handle (try/except) the exception
-   - if no input is provided  
-   - if the file cannot be opened
-   - if the file does not end in '.fasta' or '.fa' or '.nt'
-   - if a non ATGCN charcter is found in the sequence
-
-4. Now produce codons in the first three reading frames for each sequence and print out ids and sequence records for each frame and print to a file called 'Python_08.codons-3frames.nt'
-
-For example
-```
-seq1-frame-1-codons
-ATG TTG
-seq-frame-2-codons
-TGT TGA
-``` 
-
-5. Now reverse complement each sequence and print out all six reading frames to a file called 'Python_08.codons-6frames.nt'
-
-6. Translate each of the six reading frames into amino acids. Create one file for which you print the six reading frames (Python_08.codons-6frames.nt) and one file for which you print the translation of the six reading frames (Python_08.translated.aa). Use the following translation table:
-
-```python
-translation_table = {
-    'GCT':'A', 'GCC':'A', 'GCA':'A', 'GCG':'A',
-    'CGT':'R', 'CGC':'R', 'CGA':'R', 'CGG':'R', 'AGA':'R', 'AGG':'R',
-    'AAT':'N', 'AAC':'N',
-    'GAT':'D', 'GAC':'D',
-    'TGT':'C', 'TGC':'C',
-    'CAA':'Q', 'CAG':'Q',
-    'GAA':'E', 'GAG':'E',
-    'GGT':'G', 'GGC':'G', 'GGA':'G', 'GGG':'G',
-    'CAT':'H', 'CAC':'H',
-    'ATT':'I', 'ATC':'I', 'ATA':'I',
-    'TTA':'L', 'TTG':'L', 'CTT':'L', 'CTC':'L', 'CTA':'L', 'CTG':'L',
-    'AAA':'K', 'AAG':'K',
-    'ATG':'M',
-    'TTT':'F', 'TTC':'F',
-    'CCT':'P', 'CCC':'P', 'CCA':'P', 'CCG':'P',
-    'TCT':'S', 'TCC':'S', 'TCA':'S', 'TCG':'S', 'AGT':'S', 'AGC':'S',
-    'ACT':'T', 'ACC':'T', 'ACA':'T', 'ACG':'T',
-    'TGG':'W',
-    'TAT':'Y', 'TAC':'Y',
-    'GTT':'V', 'GTC':'V', 'GTA':'V', 'GTG':'V',
-    'TAA':'*', 'TGA':'*', 'TAG':'*'
-}
+>seq1
+GAATTCAAGTTCTTGTGCGCACACAAATCCAATAAAAACTATTGTGCACACAGACGCGAC
+TTCGCGGTCTCGCTTGTTCTTGTTGTATTCGTATTTTCATTTCTCGTTCTGTTTCTACTT
+AACAATGTGGTGATAATATAAAAAATAAAGCAATTCAAAAGTGTATGACTTAATTAATGA
+GCGATTTTTTTTTTGAAATCAAATTTTTGGAACATTTTTTTTAAATTCAAATTTTGGCGA
+AAATTCAATATCGGTTCTACTATCCATAATATAATTCATCAGGAATACATCTTCAAAGGC
+AAACGGTGACAACAAAATTCAGGCAATTCAGGCAAATACCGAATGACCAGCTTGGTTATC
+AATTCTAGAATTTGTTTTTTGGTTTTTATTTATCATTGTAAATAAGACAAACATTTGTTC
+CTAGTAAAGAATGTAACACCAGAAGTCACGTAAAATGGTGTCCCCATTGTTTAAACGGTT
+GTTGGGACCAATGGAGTTCGTGGTAACAGTACATCTTTCCCCTTGAATTTGCCATTCAAA
+ATTTGCGGTGGAATACCTAACAAATCCAGTGAATTTAAGAATTGCGATGGGTAATTGACA
+TGAATTCCAAGGTCAAATGCTAAGAGATAGTTTAATTTATGTTTGAGACAATCAATTCCC
+CAATTTTTCTAAGACTTCAATCAATCTCTTAGAATCCGCCTCTGGAGGTGCACTCAGCCG
+CACGTCGGGCTCACCAAATATGTTGGGGTTGTCGGTGAACTCGAATAGAAATTATTGTCG
+CCTCCATCTTCATGGCCGTGAAATCGGCTCGCTGACGGGCTTCTCGCGCTGGATTTTTTC
+ACTATTTTTGAATACATCATTAACGCAATATATATATATATATATTTAT
 ```
 
-7. Find the longest peptide sequence (M => Stop) of all the six translated reading frames for a single sequence. Do this for all the sequence records. For each sequence, print out in FASTA format the six frames of codons to one file (Python_08.codons-6frames.nt), the translations to a second file (Python_08.translated.aa), and the single longest translated peptide to a third file (Python_08.translated-longest.aa).
 
-8. Finally determine which subset of codons produced the longest peptide for each sequence record. Print this to a fourth file in FASTA format (Python_08.orf-longest.nt).  
+7. Determine the site(s) of the physical cut(s) by ApoI in the above sequence. Print out the sequence with "^" at the cut site.
+
+  Hints:  
+   - Use `sub()`  
+   - Use subpatterns (parentheses and `group()` ) to find the cut site within the pattern.
+   - Example: if the pattern is GACGT^CT the following sequence
+
+```
+AAAAAAAAGACGTCTTTTTTTAAAAAAAAGACGTCTTTTTTT
+```
+we want to display the cut site like this:
+
+```
+AAAAAAAAGACGT^CTTTTTTTAAAAAAAAGACGT^CTTTTTTT
+```
+
+8. Now that you've done your restriction digest, determine the lengths of your fragments and sort them by length (in the same order they would separate on an electrophoresis gel).
+
+Hint: Convert this string:
+
+```
+AAAAAAAAGACGT^CTTTTTTTAAAAAAAAGACGT^CTTTTTTT
+```
+
+Into this list:
+
+```
+["AAAAAAAAGACGT","CTTTTTTTAAAAAAAAGACGT","CTTTTTTT"]
+```

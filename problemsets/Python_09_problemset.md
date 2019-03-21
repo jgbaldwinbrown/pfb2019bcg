@@ -1,84 +1,79 @@
-Python 9 - Functions - Problem Set
+Python 9 - Data Structures -Problem Set
 ===================
 
-1. Create a function to format a string of DNA so that each line is no more than 60 nt long. Your function will:
-	- INPUT: a string of DNA without newlines   
-	- OUTPUT: a string of DNA with lines no more than 60 nucleoties long
+__Don't forget to use a small test data set when you are testing your code. Make sure you know what the correct answer should be__
 
+1. Take a multi-FASTA [Python_08.fasta](https://raw.githubusercontent.com/prog4biol/pfb2018/master/files/Python_08.fasta) file from user input and calculate the nucleotide composition for each sequence. Use a datastructure to keep count. Print out each sequence name and its compostion in this format `seqName\tA_count\tT_count\tG_count\C_count`
+
+Here is a structure of a handy datastructure to store this information
 ```
-INPUT:
-dna = 'GATGGGATTGGGGTTTTCCCCTCCCATGTGCTCAAGACTGGCGCTAAAAGTTTTGAGCTTCTCAAAAGTCTAGAGCCACCGTCCAGGGAGCAGGTAGCTGCTGGGCTCCGGGGACACTTTGCGTTCGGGCTGGGAGCGTGCTTTCCACGACGGTGACACGCTTCCCTGGATTGGCAGCCAGACTGCCTTCCGGGTCACTGCCATGGAGGAGCCGCAGTCAGATCCTAGCGTCGAGCCCCCTCTGAGTCAGGAAACATTTTCAGACCTATGGAAACTACTTCCTGAAAACAACGTTCTGTCCCCCTTGCCGTCCCAAGCAATGGATGATTTGATGCTGTCCCCGGACGATATTGAACAATGGTTCACTGAAGACCCAGGTCCAGATGAAGCTCCCAGAATGCCAGAGGCTGCTCCCCCCGTGGCCCCTGCACCAGCAGCTCCTACACCGGCGGCCCCTGCACCAGCCCCCTCCTGGCCCCTGTCATCTTCT'
+seqs[geneName][nucleotide]=count
 
-OUTPUT: 
-GATGGGATTGGGGTTTTCCCCTCCCATGTGCTCAAGACTGGCGCTAAAAGTTTTGAGCTT
-CTCAAAAGTCTAGAGCCACCGTCCAGGGAGCAGGTAGCTGCTGGGCTCCGGGGACACTTT
-GCGTTCGGGCTGGGAGCGTGCTTTCCACGACGGTGACACGCTTCCCTGGATTGGCAGCCA
-GACTGCCTTCCGGGTCACTGCCATGGAGGAGCCGCAGTCAGATCCTAGCGTCGAGCCCCC
-TCTGAGTCAGGAAACATTTTCAGACCTATGGAAACTACTTCCTGAAAACAACGTTCTGTC
-CCCCTTGCCGTCCCAAGCAATGGATGATTTGATGCTGTCCCCGGACGATATTGAACAATG
-GTTCACTGAAGACCCAGGTCCAGATGAAGCTCCCAGAATGCCAGAGGCTGCTCCCCCCGT
-GGCCCCTGCACCAGCAGCTCCTACACCGGCGGCCCCTGCACCAGCCCCCTCCTGGCCCCT
-GTCATCTTCT
+seqs['geneA']['A'] = 2
+seqs['geneA']['T'] = 3
+seqs['geneA']['G'] = 3
+seqs['geneA']['C'] = 1
+
+
+seqs['geneB']['A'] = 1
+seqs['geneB']['T'] = 5
+seqs['geneB']['G'] = 2
+seqs['geneB']['C'] = 2
+``` 
+
+2. Write a script that takes a multi-FASTA file [Python_08.fasta](https://raw.githubusercontent.com/prog4biol/pfb2018/master/files/Python_08.fasta) from user input and breaks each sequence into codons (every three nucleotides is a codon) in just the first reading frame. Your output should look like this 
+```
+seq1-frame-1-codons
+CAT GCT TGA GTC
+``` 
+Write the output to a file called 'Python_08.codons-frame-1.nt'.
+
+3. Add in exception handling. Throw and handle (try/except) the exception
+   - if no input is provided  
+   - if the file cannot be opened
+   - if the file does not end in '.fasta' or '.fa' or '.nt'
+   - if a non ATGCN charcter is found in the sequence
+
+4. Now produce codons in the first three reading frames for each sequence and print out ids and sequence records for each frame and print to a file called 'Python_08.codons-3frames.nt'
+
+For example
+```
+seq1-frame-1-codons
+ATG TTG
+seq-frame-2-codons
+TGT TGA
+``` 
+
+5. Now reverse complement each sequence and print out all six reading frames to a file called 'Python_08.codons-6frames.nt'
+
+6. Translate each of the six reading frames into amino acids. Create one file for which you print the six reading frames (Python_08.codons-6frames.nt) and one file for which you print the translation of the six reading frames (Python_08.translated.aa). Use the following translation table:
+
+```python
+translation_table = {
+    'GCT':'A', 'GCC':'A', 'GCA':'A', 'GCG':'A',
+    'CGT':'R', 'CGC':'R', 'CGA':'R', 'CGG':'R', 'AGA':'R', 'AGG':'R',
+    'AAT':'N', 'AAC':'N',
+    'GAT':'D', 'GAC':'D',
+    'TGT':'C', 'TGC':'C',
+    'CAA':'Q', 'CAG':'Q',
+    'GAA':'E', 'GAG':'E',
+    'GGT':'G', 'GGC':'G', 'GGA':'G', 'GGG':'G',
+    'CAT':'H', 'CAC':'H',
+    'ATT':'I', 'ATC':'I', 'ATA':'I',
+    'TTA':'L', 'TTG':'L', 'CTT':'L', 'CTC':'L', 'CTA':'L', 'CTG':'L',
+    'AAA':'K', 'AAG':'K',
+    'ATG':'M',
+    'TTT':'F', 'TTC':'F',
+    'CCT':'P', 'CCC':'P', 'CCA':'P', 'CCG':'P',
+    'TCT':'S', 'TCC':'S', 'TCA':'S', 'TCG':'S', 'AGT':'S', 'AGC':'S',
+    'ACT':'T', 'ACC':'T', 'ACA':'T', 'ACG':'T',
+    'TGG':'W',
+    'TAT':'Y', 'TAC':'Y',
+    'GTT':'V', 'GTC':'V', 'GTA':'V', 'GTG':'V',
+    'TAA':'*', 'TGA':'*', 'TAG':'*'
+}
 ```
 
-2. Modify your function so that it will work whether the DNA string does or does not have newlines. 
+7. Find the longest peptide sequence (M => Stop) of all the six translated reading frames for a single sequence. Do this for all the sequence records. For each sequence, print out in FASTA format the six frames of codons to one file (Python_08.codons-6frames.nt), the translations to a second file (Python_08.translated.aa), and the single longest translated peptide to a third file (Python_08.translated-longest.aa).
 
-```
-INPUT:
-dna = '''GATGGGATTGGGGTTTTCCCCTCCCATGTGCTCAAGACTGGCGCTAAAAGTTTTGAGCTTCTCAAAAGTCTAGAGCCACC
-GTCCAGGGAGCAGGTAGCTGCTGGGCTCCGGGGACACTTTGCGTTCGGGCTGGGAGCGTGCTTTCCACGACGGTGACACG
-CTTCCCTGGATTGGCAGCCAGACTGCCTTCCGGGTCACTGCCATGGAGGAGCCGCAGTCAGATCCTAGCGTCGAGCCCCC
-TCTGAGTCAGGAAACATTTTCAGACCTATGGAAACTACTTCCTGAAAACAACGTTCTGTCCCCCTTGCCGTCCCAAGCAA
-TGGATGATTTGATGCTGTCCCCGGACGATATTGAACAATGGTTCACTGAAGACCCAGGTCCAGATGAAGCTCCCAGAATG
-CCAGAGGCTGCTCCCCCCGTGGCCCCTGCACCAGCAGCTCCTACACCGGCGGCCCCTGCACCAGCCCCCTCCTGGCCCCT
-GTCATCTTCT'''
-
-
-OUTPUT:
-GATGGGATTGGGGTTTTCCCCTCCCATGTGCTCAAGACTGGCGCTAAAAGTTTTGAGCTT
-CTCAAAAGTCTAGAGCCACCGTCCAGGGAGCAGGTAGCTGCTGGGCTCCGGGGACACTTT
-GCGTTCGGGCTGGGAGCGTGCTTTCCACGACGGTGACACGCTTCCCTGGATTGGCAGCCA
-GACTGCCTTCCGGGTCACTGCCATGGAGGAGCCGCAGTCAGATCCTAGCGTCGAGCCCCC
-TCTGAGTCAGGAAACATTTTCAGACCTATGGAAACTACTTCCTGAAAACAACGTTCTGTC
-CCCCTTGCCGTCCCAAGCAATGGATGATTTGATGCTGTCCCCGGACGATATTGAACAATG
-GTTCACTGAAGACCCAGGTCCAGATGAAGCTCCCAGAATGCCAGAGGCTGCTCCCCCCGT
-GGCCCCTGCACCAGCAGCTCCTACACCGGCGGCCCCTGCACCAGCCCCCTCCTGGCCCCT
-GTCATCTTCT
-```
-
-3. Modify your function so that it takes two arguments, the DNA string and the max length of each line.
-
-```
-INPUT:
-dna = 'GATGGGATTGGGGTTTTCCCCTCCCATGTGCTCAAGACTGGCGCTAAAAGTTTTGAGCTTCTCAAAAGTCTAGAGCCACCGTCCAGGGAGCAGGTAGCTGCTGGGCTCCGGGGACACTTTGCGTTCGGGCTGGGAGCGTGCTTTCCACGACGGTGACACGCTTCCCTGGATTGGCAGCCAGACTGCCTTCCGGGTCACTGCCATGGAGGAGCCGCAGTCAGATCCTAGCGTCGAGCCCCCTCTGAGTCAGGAAACATTTTCAGACCTATGGAAACTACTTCCTGAAAACAACGTTCTGTCCCCCTTGCCGTCCCAAGCAATGGATGATTTGATGCTGTCCCCGGACGATATTGAACAATGGTTCACTGAAGACCCAGGTCCAGATGAAGCTCCCAGAATGCCAGAGGCTGCTCCCCCCGTGGCCCCTGCACCAGCAGCTCCTACACCGGCGGCCCCTGCACCAGCCCCCTCCTGGCCCCTGTCATCTTCT'
-width = 80
-
-OUTPUT:
-GATGGGATTGGGGTTTTCCCCTCCCATGTGCTCAAGACTGGCGCTAAAAGTTTTGAGCTTCTCAAAAGTCTAGAGCCACC
-GTCCAGGGAGCAGGTAGCTGCTGGGCTCCGGGGACACTTTGCGTTCGGGCTGGGAGCGTGCTTTCCACGACGGTGACACG
-CTTCCCTGGATTGGCAGCCAGACTGCCTTCCGGGTCACTGCCATGGAGGAGCCGCAGTCAGATCCTAGCGTCGAGCCCCC
-TCTGAGTCAGGAAACATTTTCAGACCTATGGAAACTACTTCCTGAAAACAACGTTCTGTCCCCCTTGCCGTCCCAAGCAA
-TGGATGATTTGATGCTGTCCCCGGACGATATTGAACAATGGTTCACTGAAGACCCAGGTCCAGATGAAGCTCCCAGAATG
-CCAGAGGCTGCTCCCCCCGTGGCCCCTGCACCAGCAGCTCCTACACCGGCGGCCCCTGCACCAGCCCCCTCCTGGCCCCT
-GTCATCTTCT
-```
-
-4. Modify your script so that it can take two command line arguments:
-     1) FASTA file name
-     2) Max length of each line
-
-   The script should reformat every sequence in the file to the specified max line length. Make sure your output is in proper FASTA format.
-
-5. Create a new function that calculates the GC content of a DNA sequence. 
-	- it will take a DNA sequence without spaces and no header as an argument and return the percentage of nucleotides that are a G or C.
-	- example `percentGC = gc_conent('CGTGCTTTCCACGACGGTGACACGCTTCCCTGGA')` or `percentGC = gc_content(dna)`
-	
-6. Create a new function that computes and returns the reverse complement of a sequence
-	- it will take a DNA sequence without spaces and no header as an argument and return the reverse complement, with no spaces and no header.
-	- example `revComp_sequence = get_reverse_complement(dna)`
-	
-	
-7. Pipelines:  
-  a. Create a script that runs a command with `subprocess.run`.    
-  b. Check the exit status  
-  c. If exit status is good, run a second command.  
+8. Finally determine which subset of codons produced the longest peptide for each sequence record. Print this to a fourth file in FASTA format (Python_08.orf-longest.nt).  
