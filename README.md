@@ -273,5 +273,5 @@ Sofia Robb
             * [Keeping track of differences between local and remote repositories](git.md/#keeping-track-of-differences-between-local-and-remote-repositories)
             * [Links to <em>slightly</em> less basic topics](git.md/#links-to-slightly-less-basic-topics)
          * [<a href="https://github.com/prog4biol/pfb2018/blob/master/problemsets/Unix_02_problemset.md">Link To Unix 2 Problem Set</a>](git.md/#link-to-unix-2-problem-set)
-    * [Projects](projects/project_ideas_2019.md)
+   * [Projects](projects/project_ideas_2019.md)
 
